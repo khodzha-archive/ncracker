@@ -3,18 +3,21 @@ import java.util.zip.*;
 import java.io.*;
 
 public class Archiver {
+	private Scanner scanIn;
+
 	public static void printHelp() {
+		System.out.println("==============================================================================");
 		System.out.println("This is Archiver - simple archiver/extractor");
 		System.out.println("To archive files: {a|archive} folder1 file1 file2 folder2 file3 archive_name");
 		System.out.println("To extract files: {x|extract} archive_name");
 		System.out.println("To archive files with comments: {c|comment} folder1 folder2 file1 file2 archive_name");
+		System.out.println("==============================================================================");
 	}
 
 	private String getComment(String fileName) {
-		Scanner scanIn = new Scanner(System.in);
+		scanIn = new Scanner(System.in);
 		System.out.println("Enter your comment for file: " + fileName);
 		String temp = scanIn.nextLine();
-		scanIn.close();
 		return temp;
 	}
 
@@ -72,6 +75,7 @@ public class Archiver {
 			fileStream.close();
 		}
 		zipStream.close();
+		scanIn.close();
 	}
 
 
